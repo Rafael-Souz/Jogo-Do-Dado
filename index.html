@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title> Jogo dos Dados </title>
+<style>
+
+	body{
+	
+	background: url("https://www.imagensanimadas.com/data/media/710/dado-imagem-animada-0085.gif") no-repeat;
+	background-size: 1380px;        
+}
+	.rodape ,button{
+		background-color: #f1dcd2;
+}
+	.rodape .demoresultado ,button {
+    background-color: #0c0c0b; /* Green */
+	color: rgb(209, 44, 44);
+	position: relative;
+	margin-left: 10px; 
+	height: 100px;;
+	left: 200px;
+}
+   .rodape .h3{
+	background-color: #0f0f0f; /* Green */
+  
+}
+	.container .btn-f  {	
+	position: relative;
+	left: 90px;
+	
+}
+
+	#boxcadastro	{
+	background-color:#e62a39;
+    border: 4px solid #ccc;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 550px; ;
+    border: 4px solid #ccc;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 500px; 
+    border-radius: 10px 10px;
+    box-shadow: 20px 20px rgb(10, 10, 10);
+}
+    #boxjogo {
+	 background-color:#e62a39;
+    border: 4px solid #ccc;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 650px; 
+	border-radius: 10px 10px
+}
+    .boxjogo1{
+    float: left;
+    height: 280px;
+    width: 180px;
+    padding-left: 50px;	
+	
+}
+   .boxjogo2{ 
+    float: right;
+    height: 180px;
+    width: 180px;
+    padding-right:50px;          
+}
+</style>  
+   </head>
+
+   <body class="container">
+   
+   <div id="boxcadastro">
+   <fieldset>
+         <h1><i>CADASTRO JOGO DO DADO</i>  </h1>
+	 <fieldset>
+    <label for="text"><b>Jogador 1</b>  </label>
+    <input type="text" name="nomeName" id="nickid" placeholder="Digite Seu Nome"/><br>
+<br>
+    <label for="text"><b>Jogador 2</b>  </label>
+    <input type="text" name="nomeName" id="nick2id" placeholder="Digite Seu Nome"/><br>
+<br>
+<br>
+   
+<div class="btn-f">
+	<input type="button" value="Finalizar o Cadastro" onclick="puxarj1()" id="btn-cadastrar-nick"/>
+    
+</div>
+		
+	
+   </fieldset>
+</div>
+  </fieldset>  
+
+
+<div id="boxjogo" style="display:none">
+ <fieldset>	
+<div class="boxjogo1">
+    <p id="nickname"> </p>
+    <p id="pontos"></p>
+    <img id="Img1" src="imagem/dado0.jpg" width="100px" height="100px"/>
+</div>
+
+<div class="boxjogo2"></p>
+   <p id="nickname2"></p>
+   <p id="pontos2"></p>
+   <img id="Img2" src="imagem/dado0.jpg"align="" width="100px" height="100px"/>
+</div>
+</fieldset>
+<br>
+  
+<div class="rodape">
+   
+   <h1><p id="demoresultado"></p></h1>
+   <button onclick="Sortear()" ><h3> Sortear</h3> </button> 
+   <button onclick="reset()"> <h4>Reiniciar</h4> </button>
+</div>
+</fieldset>
+  
+
+ </fieldset>
+</body>
+</html>
+					
+	    <script>
+								 
+				
+function puxarj1() { 
+var nickname1 = document.getElementById('nickid').value;
+var nickname2 = document.getElementById('nick2id').value;
+document.getElementById('nickname').innerHTML = 'Jogador 1: ' + nickname1;
+document.getElementById('nickname2').innerHTML ='Jogador 2: ' + nickname2;
+
+}
+
+document.getElementById("btn-cadastrar-nick").addEventListener("click", function(){
+				var nickname1 = document.getElementById("nickid").value;
+				var nickname2 = document.getElementById("nick2id").value;
+				
+				if (nickname1 == "" || nickname2 == ""){
+				alert( 'Campo obrigatorio!');
+				location.href = jogodosdados2.html;
+ }
+
+ var x = document.getElementById("boxcadastro");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none"
+				}
+
+			var x = document.getElementById("boxjogo");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none"
+				}
+				
+	
+});
+
+function girarDado(min,max) {
+
+return Math.floor(Math.random() * (max - min + 1)) + min;
+
+}
+
+var pontuacao1 =  10;
+var pontuacao2 =  10;
+document.getElementById('pontos').innerHTML = 'Pontos: ' + pontuacao1;
+document.getElementById('pontos2').innerHTML = 'Pontos: ' + pontuacao2;
+
+
+	
+
+function Sortear(){
+
+var delay = 40;
+var num_dado=girarDado(1, 6);
+var num_dado2=girarDado(1, 6);
+	 
+
+	if(num_dado==1) document.getElementById("Img1").src="imagem/dado1.jpg";
+					else if (num_dado==2) document.getElementById("Img1").src="imagem/dado2.jpg";
+						else if (num_dado==3) document.getElementById("Img1").src="imagem/dado3.jpg";
+							else if (num_dado==4) document.getElementById("Img1").src="imagem/dado4.jpg";
+								else if (num_dado==5) document.getElementById("Img1").src="imagem/dado5.jpg";
+									else document.getElementById("Img1").src="imagem/dado6.jpg";
+								
+				
+				if(num_dado2==1) document.getElementById("Img2").src="imagem/dado1.jpg";
+					else if (num_dado2==2) document.getElementById("Img2").src="imagem/dado2.jpg";
+						else if (num_dado2==3) document.getElementById("Img2").src="imagem/dado3.jpg";
+							else if (num_dado2==4) document.getElementById("Img2").src="imagem/dado4.jpg";
+								else if (num_dado2==5) document.getElementById("Img2").src="imagem/dado5.jpg";
+									else document.getElementById("Img2").src="imagem/dado6.jpg";
+									
+
+	if (num_dado == num_dado2){
+		
+		pontuacao1 = pontuacao1;
+		pontuacao2 = pontuacao2;
+		
+		document.getElementById('demoresultado').innerHTML = 'Jogo Empatou ' ; 
+	} else if (num_dado < num_dado2){
+		pontuacao1 = pontuacao1 - 1;	
+	
+		document.getElementById('demoresultado').innerHTML = ' Jogador 2 Venceu a Partida ' ; 
+	} else if (num_dado > num_dado2) {
+		pontuacao2 = pontuacao2 - 1;
+		document.getElementById('demoresultado').innerHTML = ' Jogador 1 Venceu a Partida' ; 
+	} 
+	
+	document.getElementById('pontos').innerHTML= 'Pontos: ' + pontuacao1;
+	document.getElementById('pontos2').innerHTML= 'Pontos: ' + pontuacao2;
+	
+	if (pontuacao1 == 0){ 
+		document.getElementById('demoresultado').innerHTML = 'Jogador 2 Venceu o JOGO ' ;
+		
+		setTimeout(function(){
+        alert('Jogo encerrado');
+		location.reload()
+       
+},delay);
+	}
+	else if (pontuacao2 == 0){
+		document.getElementById('demoresultado').innerHTML = 'Jogador 1 Venceu o JOGO ' ;
+		
+		setTimeout(function(){
+        alert('Jogo encerrado');
+		location.reload()
+},delay);
+	} 
+	
+}
+	
+	function reset() {	
+location.reload()
+
+};
+	
+
+		</script>
+					
+	</body>
+</html>
